@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order - Moms Kitchen</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+    }
+
+    .order-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 2rem;
+    }
+
+    .order-item {
+      flex: 1 1 300px;
+      margin: 1rem;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      background: #fff;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .order-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .order-item h3 {
+      margin: 1rem 0 0.5rem;
+    }
+
+    .order-item p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .order-item input[type="number"] {
+      width: 60px;
+      padding: 0.3rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .order-item button {
+      background: #16a083;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-top: 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .order-item button:hover {
+      background: #117964;
+    }
+
+    .cart-summary {
+      margin: 2rem;
+      padding: 1.5rem;
+      border: 1px dashed #888;
+      background: #fff;
+      border-radius: 10px;
+    }
+
+    .cart-summary ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .cart-summary li {
+      margin-bottom: 0.7rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-summary button.remove {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .payment-options {
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .payment-options h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .payment-options img {
+      height: 32px;
+      margin-right: 10px;
+    }
+
+    .checkout-btn {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: #2ecc71;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .checkout-btn:hover {
+      background: #27ae60;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="navbar-container container">
+    <ul class="menu-items">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#food">Category</a></li>
+      <li><a href="index.html#food-menu">Menu</a></li>
+      <li><a href="index.html#testimonials">Customer</a></li>
+      <li><a href="index.html#faq">Questions</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="order.html">Order</a></li>
+    </ul>
+    <h1 class="logo">Moms Kitchen</h1>
+  </div>
+</nav>
+
+<!-- Order Items Section -->
+<section class="order-container container">
+  <!-- Butter Chicken -->
+  <div class="order-item">
+    <img src="BC.jpg" alt="Classic Butter Chicken"/>
+    <h3>Classic Butter Chicken</h3>
+    <p>Tender chicken in a rich, creamy tomato sauce. Perfectly spiced for a comforting meal.</p>
+    <p><strong>$12.99</strong></p>
+    Qty: <input type="number" min="1" value="1" id="qty1"/>
+    <button onclick="addToCart('Classic Butter Chicken', 12.99, 'qty1')">Add to Cart</button>
+  </div>
+
+  <!-- Vegetable Biryani -->
+  <div class="order-item">
+    <img src="VB.jpg" alt="Vegetable Biryani"/>
+    <h3>Vegetable Biryani</h3>
+    <p>A fragrant rice dish cooked with mixed vegetables and aromatic spices. A vegetarian delight!</p>
+    <p><strong>$10.99</strong></p>
+    Qty: <input type="number" min="1" value="1" id="qty2"/>
+    <button onclick="addToCart('Vegetable Biryani', 10.99, 'qty2')">Add to Cart</button>
+  </div>
+
+  <!-- Creamy Mushroom -->
+  <div class="order-item">
+    <img src="CM.jpg" alt="Creamy Mushroom"/>
+    <h3>Creamy Mushroom</h3>
+    <p>Creamy mushroom risotto cooked to perfection with parmesan cheese and fresh herbs.</p>
+    <p><strong>$12.00</strong></p>
+    Qty: <input type="number" min="1" value="1" id="qty3"/>
+    <button onclick="addToCart('Creamy Mushroom', 12.00, 'qty3')">Add to Cart</button>
+  </div>
+
+  <!-- Homemade Naan Bread -->
+  <div class="order-item">
+    <img src="NB.jpg" alt="Homemade Naan Bread"/>
+    <h3>Homemade Naan Bread</h3>
+    <p>Soft and fluffy naan baked to perfection. A perfect accompaniment to any dish.</p>
+    <p><strong>$3.99</strong></p>
+    Qty: <input type="number" min="1" value="1" id="qty4"/>
+    <button onclick="addToCart('Homemade Naan Bread', 3.99, 'qty4')">Add to Cart</button>
+  </div>
+
+  <!-- Salad -->
+  <div class="order-item">
+    <img src="Salad.jpg" alt="Salad"/>
+    <h3>Salad</h3>
+    <p>Fresh garden salad with mixed greens, cucumbers, radishes, and a tangy vinaigrette.</p>
+    <p><strong>$6.25</strong></p>
+    Qty: <input type="number" min="1" value="1" id="qty5"/>
+    <button onclick="addToCart('Salad', 6.25, 'qty5')">Add to Cart</button>
+  </div>
+
+  <!-- Choco Cake -->
+  <div class="order-item">
+    <img src="Choco.jpg" alt="Choco Cake"/>
+    <h3>Choco Cake</h3>
+    <p>Homemade chocolate cake layered with rich ganache and topped with fresh berries.</p>
+    <p><strong>$7.80</strong></p>
+    Qty: <input type="number" min="1" value="1" id="qty6"/>
+    <button onclick="addToCart('Choco Cake', 7.80, 'qty6')">Add to Cart</button>
+  </div>
+</section>
+
+<!-- Cart Summary Section -->
+<section class="container cart-summary">
+  <h2>Your Cart</h2>
+  <ul id="cart-list"></ul>
+  <p><strong>Total: $<span id="cart-total">0.00</span></strong></p>
+
+  <!-- Payment -->
+  <div class="payment-options" id="payment-section">
+    <h3>Choose Payment Method:</h3>
+    <label><input type="radio" name="payment" /> Credit Card</label>
+    <label><input type="radio" name="payment" /> PayPal</label>
+    <label><input type="radio" name="payment" /> Debit</label>
+    <div style="margin-top: 10px;">
+      <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" />
+      <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="MasterCard" />
+      <img src="https://img.icons8.com/color/48/000000/paypal.png" alt="PayPal" />
+    </div>
+    <button class="checkout-btn">Checkout</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+  <h2>Moms Kitchen &copy; all rights reserved</h2>
+</footer>
+
+<script>
+  let total = 0;
+  const cartList = document.getElementById("cart-list");
+
+  function addToCart(item, price, qtyId) {
+    const quantity = parseInt(document.getElementById(qtyId).value);
+    if(quantity < 1) {
+      alert('Please enter a valid quantity (1 or more).');
+      return;
+    }
+    const itemTotal = price * quantity;
+    total += itemTotal;
+
+    const li = document.createElement("li");
+    li.innerHTML = `${item} x ${quantity} - $${itemTotal.toFixed(2)} <button class="remove" onclick="removeItem(this, ${itemTotal})">Remove</button>`;
+    cartList.appendChild(li);
+
+    document.getElementById("cart-total").textContent = total.toFixed(2);
+    document.getElementById("payment-section").style.display = "block";
+  }
+
+  function removeItem(button, itemPrice) {
+    const li = button.parentElement;
+    li.remove();
+    total -= itemPrice;
+    document.getElementById("cart-total").textContent = total.toFixed(2);
+    if (cartList.children.length === 0) {
+      document.getElementById("payment-section").style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>
